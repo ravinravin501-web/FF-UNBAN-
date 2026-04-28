@@ -1,99 +1,33 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FF Unban Request</title>
-
+<title>FF Unban Service</title>
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Segoe UI;
-}
-
-body{
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-}
-
-.container{
-    width:350px;
-    padding:40px;
-    border-radius:20px;
-    background:rgba(255,255,255,0.08);
-    backdrop-filter:blur(12px);
-    text-align:center;
-    box-shadow:0 10px 30px rgba(0,0,0,0.4);
-}
-
-h1{
-    color:#00c6ff;
-    margin-bottom:25px;
-}
-
-.input-box{
-    margin-bottom:20px;
-}
-
-select,input{
-    width:100%;
-    padding:12px;
-    border:none;
-    border-radius:10px;
-    background:rgba(255,255,255,0.15);
-    color:white;
-    outline:none;
-}
-
-select option{
-    color:black;
-}
-
-button{
-    width:100%;
-    padding:12px;
-    border:none;
-    border-radius:10px;
-    background:linear-gradient(90deg,#00c6ff,#0072ff);
-    color:white;
-    font-size:16px;
-    cursor:pointer;
-}
-
-button:hover{
-    transform:scale(1.05);
-}
+body { font-family: Arial; text-align: center; background:#111; color:#fff; }
+input, button { padding:10px; margin:10px; }
 </style>
 </head>
 
 <body>
 
-<div class="container">
-    <h1>FF Unban Request</h1>
+<h1>Free Fire Unban Request</h1>
 
-    <form action="profile.html" method="GET">
-        <div class="input-box">
-            <select name="region" required>
-                <option value="">Select Region</option>
-                <option>India</option>
-                <option>Singapore</option>
-                <option>Brazil</option>
-                <option>Indonesia</option>
-            </select>
-        </div>
+<input type="text" id="uid" placeholder="Enter UID">
+<br>
+<button onclick="nextPage()">Submit</button>
 
-        <div class="input-box">
-            <input type="text" name="uid" placeholder="Enter UID" required>
-        </div>
-
-        <button type="submit">Submit</button>
-    </form>
-</div>
+<script>
+function nextPage(){
+    let uid = document.getElementById("uid").value;
+    if(uid==""){
+        alert("Enter UID");
+        return;
+    }
+    localStorage.setItem("uid", uid);
+    window.location.href="page2.html";
+}
+</script>
 
 </body>
 </html>
