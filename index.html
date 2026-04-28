@@ -1,29 +1,100 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-<title>FF Unban Service</title>
+<title>Free Fire Unban</title>
+
 <style>
-body { font-family: Arial; text-align: center; background:#111; color:#fff; }
-input, button { padding:10px; margin:10px; }
+body {
+    margin:0;
+    font-family: Arial;
+    color:white;
+    text-align:center;
+
+    /* Free Fire Background */
+    background: url('https://wallpapercave.com/wp/wp7418474.jpg') no-repeat center center/cover;
+}
+
+/* Dark overlay */
+.overlay {
+    background: rgba(0,0,0,0.7);
+    min-height:100vh;
+    padding:20px;
+}
+
+/* Garena Logo */
+.logo {
+    width:80px;
+    position:absolute;
+    top:10px;
+    left:10px;
+}
+
+/* Box */
+.box {
+    border:1px solid #555;
+    padding:20px;
+    margin:100px auto;
+    width:90%;
+    max-width:400px;
+    background:rgba(0,0,0,0.6);
+    border-radius:10px;
+}
+
+/* Input & Button */
+input {
+    padding:10px;
+    width:80%;
+    margin:10px;
+    border:none;
+    border-radius:5px;
+}
+
+button {
+    padding:12px 20px;
+    background:green;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
 </style>
+
 </head>
 
 <body>
 
-<h1>Free Fire Unban Request</h1>
+<div class="overlay">
 
-<input type="text" id="uid" placeholder="Enter UID">
+<!-- Garena Logo -->
+<img src="https://upload.wikimedia.org/wikipedia/en/7/77/Garena_logo.png" class="logo">
+
+<div class="box">
+
+<h2>Free Fire Unban Request</h2>
+
+<input type="text" id="uid" placeholder="Enter Free Fire UID">
+
 <br>
+
 <button onclick="nextPage()">Submit</button>
+
+<p style="font-size:12px; margin-top:15px;">
+This is a fan-made service, not official.
+</p>
+
+</div>
+
+</div>
 
 <script>
 function nextPage(){
     let uid = document.getElementById("uid").value;
+
     if(uid==""){
         alert("Enter UID");
         return;
     }
+
     localStorage.setItem("uid", uid);
     window.location.href="page2.html";
 }
