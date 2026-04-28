@@ -1,32 +1,83 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <title>Payment</title>
 
 <style>
-body { font-family: Arial; text-align:center; background:#000; color:#fff; }
-.box { border:1px solid #444; padding:20px; margin:20px; }
-button { padding:10px 20px; }
+body {
+    margin:0;
+    font-family: Arial;
+    color:white;
+    text-align:center;
+
+    /* Free Fire Background */
+    background: url('https://wallpapercave.com/wp/wp7418474.jpg') no-repeat center center/cover;
+}
+
+/* Dark overlay for readability */
+.overlay {
+    background: rgba(0,0,0,0.7);
+    min-height:100vh;
+    padding:20px;
+}
+
+/* Garena Logo */
+.logo {
+    width:80px;
+    position:absolute;
+    top:10px;
+    left:10px;
+}
+
+/* Box */
+.box {
+    border:1px solid #555;
+    padding:20px;
+    margin:20px auto;
+    width:90%;
+    max-width:400px;
+    background:rgba(0,0,0,0.6);
+    border-radius:10px;
+}
+
+/* Button */
+button {
+    padding:12px 20px;
+    background:green;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
 </style>
 
 </head>
 
 <body>
 
+<div class="overlay">
+
+<!-- Garena Logo -->
+<img src="https://upload.wikimedia.org/wikipedia/en/7/77/Garena_logo.png" class="logo">
+
 <h2>Player Details</h2>
 
 <div class="box">
 <p>UID: <span id="uid"></span></p>
-<p>Name: ******</p>
-<p>Level: ******</p>
-<p>Rank: *****</p>
+<p>Name: TSK PLAYER</p>
+<p>Level: 65</p>
+<p>Rank: Heroic</p>
 </div>
 
 <h2>Pay Now</h2>
 
 <div class="box">
-<img src="gpay.png" width="200"><br><br>
-<p>Scan & Pay via UPI</p>
+<img src="your-qr.png" width="200"><br><br>
+
+<a href="upi://pay?pa=yourupi@okaxis&pn=Ravin&am=50&cu=INR">
+    <button>Pay Now (GPay / PhonePe)</button>
+</a>
+
 <p id="timer">05:00</p>
 </div>
 
@@ -35,6 +86,8 @@ button { padding:10px 20px; }
 <button onclick="submitProof()">Submit Payment</button>
 
 <p id="status"></p>
+
+</div>
 
 <script>
 document.getElementById("uid").innerText = localStorage.getItem("uid");
@@ -68,4 +121,4 @@ function submitProof(){
 </script>
 
 </body>
-</html>                                        </html>
+</html>                          
