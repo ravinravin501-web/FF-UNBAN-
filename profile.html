@@ -1,119 +1,71 @@
-<!DOCTYPE html>
-<html lang="en">
+<<d     <!DOCTYPE html>
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Player Profile</title>
+<title>Payment</title>
 
 <style>
-body{
-    margin:0;
-    font-family:Segoe UI;
-    background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-    color:white;
-    text-align:center;
-}
-
-.container{
-    width:350px;
-    margin:40px auto;
-    padding:25px;
-    border-radius:20px;
-    background:rgba(255,255,255,0.08);
-    backdrop-filter:blur(12px);
-}
-
-/* QR */
-.qr img{
-    width:200px;
-}
-
-/* Profile */
-.profile{
-    margin-top:20px;
-}
-
-.profile img{
-    width:90px;
-    border-radius:50%;
-}
-
-.stat{
-    margin:6px 0;
-    font-size:15px;
-}
-
-h2{
-    color:#00c6ff;
-}
+body { font-family: Arial; text-align:center; background:#000; color:#fff; }
+.box { border:1px solid #444; padding:20px; margin:20px; }
+button { padding:10px 20px; }
 </style>
+
 </head>
 
 <body>
 
-<div class="container">
+<h2>Player Details</h2>
 
-    <!-- QR -->
-    <div class="qr">
-        <h3>Pay ₹500</h3>
-        <img src="gpay.png">
-    </div>
-
-    <!-- Profile -->
-    <div class="profile">
-        <h2 id="name">Player Name</h2>
-    
-
-        <p class="stat"><strong>UID:</strong> <span id="uid"></span></p>
-        <p class="stat"><strong>Region:</strong> <span id="region"></span></p>
-        <p class="stat"><strong>Level:</strong> <span id="level"></span></p>
-        <p class="stat"><strong>Rank:</strong> <span id="rank"></span></p>
-        <p class="stat"><strong>Status:</strong> Verified</p>
-    </div>
-
+<div class="box">
+<p>UID: <span id="uid"></span></p>
+<p>Name: ******</p>
+<p>Level: ******</p>
+<p>Rank: *****</p>
 </div>
 
+<h2>Pay Now</h2>
+
+<div class="box">
+<img src="your-qr.png" width="200"><br><br>
+<p>Scan & Pay via UPI</p>
+<p id="timer">05:00</p>
+</div>
+
+<input type="file" id="proof"><br><br>
+
+<button onclick="submitProof()">Submit Payment</button>
+
+<p id="status"></p>
+
 <script>
-// Get URL data
-const params = new URLSearchParams(window.location.search);
-const uid = params.get("uid") || "*********";
-const region = params.get("region") || "India";
+document.getElementById("uid").innerText = localStorage.getItem("uid");
 
-// Show basic info
-document.getElementById("uid").innerText = uid;
-document.getElementById("region").innerText = region;
+// Timer
+let time = 300;
+let timer = setInterval(()=>{
+    let min = Math.floor(time/60);
+    let sec = time%60;
+    document.getElementById("timer").innerText =
+        (min<10?"0":"")+min+":"+(sec<10?"0":"")+sec;
 
-// Generate realistic profile
-function generateProfile(uid){
-    let num = parseInt(uid.replace(/\D/g,'')) || 12345;
+    time--;
+    if(time<0){
+        clearInterval(timer);
+        document.getElementById("timer").innerText = "EXPIRED";
+    }
+},1000);
 
-    let names = ["TSK","Shadow","Legend","Sniper","Ghost","Hunter","Dragon"];
-    let name = names[num % names.length] + "_" + uid.slice(-3);
+// Submit
+function submitProof(){
+    let file = document.getElementById("proof").files.length;
+    if(file==0){
+        alert("Upload payment screenshot");
+        return;
+    }
 
-    let level = (num % 75) + 5;
-
-    let ranks = [
-        "Bronze",
-        "Silver",
-        "Gold",
-        "Platinum",
-        "Diamond",
-        "Heroic",
-        "Grandmaster"
-    ];
-    let rank = ranks[num % ranks.length];
-
-    return {name, level, rank};
+    document.getElementById("status").innerText =
+        "Payment Submitted! Waiting for verification...";
 }
-
-let p = generateProfile(uid);
-
-// Set values
-document.getElementById("name").innerText = p.name;
-document.getElementById("level").innerText = p.level;
-document.getElementById("rank").innerText = p.rank;
-
 </script>
 
 </body>
-                                                 </html>
+</html>                                        </html>
