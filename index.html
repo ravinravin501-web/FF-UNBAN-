@@ -1,52 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Free Fire Unban</title> 
+<meta charset="UTF-8">
+<title>Free Fire Unban</title>
 
 <style>
 body {
     margin:0;
     font-family: Arial;
+    background: url('https://i.imgur.com/3ZQ3Z4S.jpg') no-repeat center center/cover;
     color:white;
     text-align:center;
-
-    /* Free Fire Background */
-    background: url('https://wallpapercave.com/wp/wp7418474.jpg') no-repeat center center/cover;
 }
 
-/* Dark overlay */
 .overlay {
     background: rgba(0,0,0,0.7);
-    min-height:100vh;
-    padding:20px;
+    height:100vh;
+    padding-top:100px;
 }
 
-/* Garena Logo */
 .logo {
-    width:80px;
     position:absolute;
     top:10px;
     left:10px;
+    width:70px;
 }
 
-/* Box */
 .box {
-    border:1px solid #555;
+    background: rgba(0,0,0,0.6);
     padding:20px;
-    margin:100px auto;
+    margin:auto;
     width:90%;
-    max-width:400px;
-    background:rgba(0,0,0,0.6);
+    max-width:350px;
     border-radius:10px;
 }
 
-/* Input & Button */
 input {
-    padding:10px;
     width:80%;
+    padding:10px;
     margin:10px;
-    border:none;
     border-radius:5px;
+    border:none;
 }
 
 button {
@@ -55,39 +49,30 @@ button {
     color:white;
     border:none;
     border-radius:5px;
-    cursor:pointer;
 }
 </style>
-
 </head>
 
 <body>
 
-<div class="overlay">
-
-<!-- Garena Logo -->
 <img src="https://upload.wikimedia.org/wikipedia/en/7/77/Garena_logo.png" class="logo">
 
+<div class="overlay">
+
 <div class="box">
+<h2>Free Fire Unban</h2>
 
-<h2>Free Fire Unban Request</h2>
+<input type="text" id="uid" placeholder="Enter UID"><br>
 
-<input type="text" id="uid" placeholder="Enter Free Fire UID">
+<button onclick="goNext()">Continue</button>
 
-<br>
-
-<button onclick="nextPage()">Submit</button>
-
-<p style="font-size:12px; margin-top:15px;">
-This is a fan-made service, not official.
-</p>
-
+<p style="font-size:12px;">Fan-made service</p>
 </div>
 
 </div>
 
 <script>
-function nextPage(){
+function goNext(){
     let uid = document.getElementById("uid").value;
 
     if(uid==""){
